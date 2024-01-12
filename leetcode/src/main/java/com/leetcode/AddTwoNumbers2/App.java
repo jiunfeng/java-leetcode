@@ -39,10 +39,36 @@ class ListNode {
 public class App {
     public static void main(String[] args) {
         // 创建链表: 1 -> 2 -> 3
-        ListNode head = new ListNode(1, new ListNode(2, new ListNode(3)));
+        ListNode head1 = new ListNode(1, new ListNode(2, new ListNode(3)));
+        ListNode head2 = new ListNode(4, new ListNode(5, new ListNode(6)));
+        StringBuilder head1st = new StringBuilder();
+        StringBuilder head2st = new StringBuilder();
+        int rhead1, rhead2;
+        int sum;
+        while (head1 != null) {
+            head1st.append(head1.val);
+            head1 = head1.next;
+        }
+        rhead1 = Integer.parseInt(head1st.reverse().toString());
+        System.out.println(rhead1);
 
+        while (head2 != null) {
+            head2st.append(head2.val);
+            head2 = head2.next;
+        }
+        rhead2 = Integer.parseInt(head2st.reverse().toString());
+        System.out.println(rhead2);
+
+        sum = rhead1 + rhead2;
+        System.out.println(sum);
+        StringBuilder sumStr = new StringBuilder(Integer.toString(sum));
+        System.out.println(sumStr.reverse());
+
+        ListNode a = new ListNode(Integer.parseInt(sumStr.toString()));
+        System.out.println(a.val);
+        // System.out.println(head1st);
         // 遍历链表并打印节点值
-        printLinkedList(head);
+        // printLinkedList(head);
         // int[] num = { 5, 6, 7 };
         // System.out.println(Arrays.toString(num));
         // String str = "";
