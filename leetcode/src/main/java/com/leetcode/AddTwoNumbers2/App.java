@@ -60,12 +60,23 @@ public class App {
         System.out.println(rhead2);
 
         sum = rhead1 + rhead2;
-        System.out.println(sum);
-        StringBuilder sumStr = new StringBuilder(Integer.toString(sum));
-        System.out.println(sumStr.reverse());
+        System.out.println(sum + "總值數字");
+        StringBuilder sumStrtmp = new StringBuilder(Integer.toString(sum));
+        System.out.println(sumStrtmp.reverse().toString());
+        String sumStr = sumStrtmp.reverse().toString();
+        ListNode dummyHead = new ListNode(0);
+        ListNode tail = dummyHead;
+        for (char c : sumStr.toCharArray()) {
+            System.out.println(Character.getNumericValue(c));
+            int intc = Character.getNumericValue(c);
+            ListNode newNode = new ListNode(intc);
+            tail.next = newNode;
+            tail = tail.next;
+        }
+        ListNode result = dummyHead.next;
+        dummyHead.next = null;
 
-        ListNode a = new ListNode(Integer.parseInt(sumStr.toString()));
-        System.out.println(a.val);
+        printLinkedList(result);
         // System.out.println(head1st);
         // 遍历链表并打印节点值
         // printLinkedList(head);
