@@ -54,29 +54,51 @@ class ListNode {
 
 class Solution {
     public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
-        ListNode result = new ListNode();
-        while (list1 != null) {
-            while (list2 != null) {
-                if (list1.val >= list2.val) {
-                    ListNode add = new ListNode(list2.val);
-                    result = add;
-                    result = result.next;
-                }
+        ListNode head = new ListNode(0);
+        ListNode tail = head;
+        // 處理兩個node不為空
+        while (list1 != null && list2 != null) {
+            if (list1.val > list2.val) {
+                ListNode newAdd = new ListNode(list2.val);
+                tail.next = newAdd;
+                tail = tail.next;
                 list2 = list2.next;
+            } else {
+                ListNode newAdd = new ListNode(list1.val);
+                tail.next = newAdd;
+                tail = tail.next;
+                list1 = list1.next;
             }
         }
-        return list1;
+        // 將不為空的剩下那組添加到node尾
+        while (list1 != null) {
+            ListNode newAdd = new ListNode(list1.val);
+            tail.next = newAdd;
+            tail = tail.next;
+            list1 = list1.next;
+        }
+        while (list2 != null) {
+            ListNode newAdd = new ListNode(list2.val);
+            tail.next = newAdd;
+            tail = tail.next;
+            list2 = list2.next;
+        }
+        ListNode result = head.next;
+
+        return result;
     }
 }
 
 public class App {
     public static void main(String[] args) {
-        ListNode head1 = new ListNode(1, new ListNode(2, new ListNode(4)));
-        ListNode head2 = new ListNode(1, new ListNode(3, new ListNode(4)));
+        // ListNode head1 = new ListNode(1, new ListNode(2, new ListNode(4)));
+        // ListNode head2 = new ListNode(1, new ListNode(3, new ListNode(4)));
+        ListNode head1 = new ListNode(1);
+        ListNode head2 = new ListNode(2);
 
         Solution sol = new Solution();
-        sol.mergeTwoLists(head1, head2);
-        printLinkedList(head2);
+
+        printLinkedList(sol.mergeTwoLists(head1, head2));
     }
 
     private static void printLinkedList(ListNode head) {
