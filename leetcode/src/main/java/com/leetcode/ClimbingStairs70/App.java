@@ -37,11 +37,7 @@ class Solution {
 
             }
         }
-        System.out.println(arrayResult.get(0));
-        System.out.println(arrayResult.get(1));
-        System.out.println(arrayResult.get(2));
-        System.out.println(arrayResult.get(3));
-        System.out.println(arrayResult.get(4));
+
         result = arrayResult.get(n - 1);
         return result;
     }
