@@ -25,3 +25,6 @@ const { newArr, changedIndices } = removeAndRecordIndices(originalArray, targetV
 
 console.log("改變後的陣列:", newArr);
 console.log("元素移動的索引:", changedIndices);
+const matrix = Array.from({ length: 5 }, () => Array(6).fill(null));
+
+console.log(matrix);
